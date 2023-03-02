@@ -11,9 +11,6 @@
 #define POS_Y 4
 #define NEG_Y 5
 
-#define BUTTON_PIN 8
-#define RED_LED 5
-#define GREEN_LED 7
 
 #define TOTAL_EFFECTS 8
 #define RAIN 0
@@ -53,48 +50,40 @@ uint8_t currentEffect;
 uint16_t timer;
 
 uint64_t randomTimer;
-
+unsigned long previousMillis = 0;
+unsigned long elapsedMillis = 0;
 bool loading;
 
 void setup() {
 
   loading = true;
   randomTimer = 0;
-  currentEffect = RAIN;
+  currentEffect = CUBE_JUMP;
 
   SPI.begin();
   SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
 
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
-  pinMode(RED_LED, OUTPUT);
-  pinMode(GREEN_LED, OUTPUT);
-
   randomSeed(analogRead(0));
-  digitalWrite(GREEN_LED, HIGH);
+  previousMillis = millis();
 
 }
 
 void loop() {
+  elapsedMillis = millis();
 
-  randomTimer++;
-
-  if (digitalRead(BUTTON_PIN) == LOW) {
-    clearCube();
+  if(elapsedMillis - previousMillis > 10*1000){
+    previousMillis = millis();
     loading = true;
     timer = 0;
-    currentEffect++;
-    if (currentEffect == TOTAL_EFFECTS) {
+    if(currentEffect < 7){
+      currentEffect++;
+    }
+    else{
       currentEffect = 0;
     }
-    randomSeed(randomTimer);
-    randomTimer = 0;
-    digitalWrite(RED_LED, HIGH);
-    digitalWrite(GREEN_LED, LOW);
     delay(500);
-    digitalWrite(RED_LED, LOW);
-    digitalWrite(GREEN_LED, HIGH);
   }
-
+ 
   switch (currentEffect) {
     case RAIN: rain(); break;
     case PLANE_BOING: planeBoing(); break;
