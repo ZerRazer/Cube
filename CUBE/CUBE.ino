@@ -58,7 +58,7 @@ void setup() {
 
   loading = true;
   randomTimer = 0;
-  currentEffect = CUBE_JUMP;
+  currentEffect = TEXT;
 
   SPI.begin();
   SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
