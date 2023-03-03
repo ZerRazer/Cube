@@ -44,7 +44,7 @@ uint8_t characters[10][8] = {
   {0x3C, 0x42, 0x42, 0x42, 0x3C, 0x40, 0x40, 0x3C}, //9
 };
 
-uint8_t cube[8][8];
+uint8_t cube[9][8];
 uint8_t currentEffect;
 
 uint16_t timer;
@@ -102,7 +102,7 @@ void loop() {
 }
 
 void renderCube() {
-  for (uint8_t i = 0; i < 8; i++) {
+  for (uint8_t i = 0; i < 9; i++) {
     digitalWrite(SS, LOW);
     SPI.transfer(0x01 << i);
     for (uint8_t j = 0; j < 8; j++) {
