@@ -6,7 +6,7 @@
 #define CENTER_Z 3.5
 
 // define number of iterations
-#define ITERATIONS 200
+#define ITERATIONS 400
 class SineWave{
   private:
     uint8_t cube[8][8];
@@ -35,14 +35,18 @@ class SineWave{
                 double distance = sqrt(dx * dx + dy * dy);
 
                 // calculate z coordinate using sin() based on distance from center and iteration counter
-                double z = CENTER_Z + sin(distance + i) * 2;
+                double z = CENTER_Z + sin((distance + i) * 0.2) * 3;
                 // cast coordinates to integers and set voxel in cube
-                uint8_t voxelX = (uint8_t)x;
-                uint8_t voxelY = (uint8_t)y;
-                uint8_t voxelZ = (uint8_t)round(z);
-
-                setVoxel(voxelX, voxelY, voxelZ);
-                delay(2);
+                // determine the position in the cube array based on the smoothed x, y, and z coordinates
+                double smoothX = x + (sin((i / (double)ITERATIONS) * 2 * PI) * 1.5);
+                double smoothY = y + (sin((i / (double)ITERATIONS) * 2 * PI) * 1.5);
+                double smoothZ = z + (cos((i / (double)ITERATIONS) * 2 * PI) * 1.5);
+            
+                // check if the smoothed position is within the bounds of the cube
+                if (smoothX >= 0 && smoothX < 8 && smoothY >= 0 && smoothY < 8 && smoothZ >= 0 && smoothZ < 8) {
+                // set the voxel at the smoothed position in the cube
+                  setVoxel((uint8_t)round(smoothX), (uint8_t)round(smoothY), (uint8_t)round(smoothZ));
+                }
                 renderCube();
               }
             }
