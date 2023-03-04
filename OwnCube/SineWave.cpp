@@ -34,10 +34,10 @@ class SineWave{
                 // calculate distance between center of the cube and x/y coordinate
                 double dx = x - CENTER_X;
                 double dy = y - CENTER_Y;
-                double distance = sqrt(dx * dx + dy * dy);
+                double distance = sqrt(dx * dx + dy * dy) * 5;              ;
 
                 // calculate z coordinate using sin() based on distance from center and iteration counter
-                double z = CENTER_Z + sin((distance + i) * 0.3) * 3.5;
+                double z = CENTER_Z + sin((distance + i) * 0.1 ) * 4;
                 // cast coordinates to integers and set voxel in cube
                 // determine the position in the cube array based on the smoothed x, y, and z coordinates
                 double smoothX = x;

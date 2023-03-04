@@ -1,7 +1,7 @@
 #include "SPI.h"
 class GenerationMethods{
   private:
-    uint8_t cube[9][8];
+    uint8_t cube[10][8];
   public:
     void setVoxel(uint8_t x, uint8_t y, uint8_t z) {
       cube[z][y] |= (0x01 << x);
