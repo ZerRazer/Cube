@@ -12,9 +12,7 @@
 class SineWave{
   private:
     GenerationMethods gen;
-    int timer = 0;
     double dx, dy, distance;
-    bool loading = true;
     bool rotating = false;
     double counter = 0;
     

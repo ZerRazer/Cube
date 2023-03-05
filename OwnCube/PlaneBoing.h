@@ -9,8 +9,6 @@ class PlaneBoing{
   uint8_t planePosition = 0;
   uint8_t planeDirection = 0;
   bool looped = false;
-  int loading = true;
-  int timer = 0;
 
   public:
   PlaneBoing();

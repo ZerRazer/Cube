@@ -5,13 +5,14 @@ SineWave::SineWave(bool rotating){
   this->rotating = rotating;
 }
 void SineWave::drawSineWave() {
-  if (loading) {
+  if (gen.loading) {
     gen.clearCube();
-    loading = false;
+    gen.loading = false;
+
   }
-  timer++;
-  if (timer > 300) {
-    timer = 0;
+  gen.timer++;
+  if (gen.timer > 300) {
+    gen.timer = 0;
     // loop through the iteration counter
     for (int i = 0; i < ITERATIONS; i++) {
       // loop through all 64 x and y coordinates

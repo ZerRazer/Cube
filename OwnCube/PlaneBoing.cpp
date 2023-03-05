@@ -4,7 +4,7 @@ PlaneBoing::PlaneBoing(){
 
 }
 void PlaneBoing::drawPlaneBoing(){
- if (loading) {
+ if (gen.loading) {
     gen.clearCube();
     uint8_t axis = random(0, 3);
     planePosition = random(0, 2) * 7;
@@ -28,20 +28,20 @@ void PlaneBoing::drawPlaneBoing(){
         planeDirection = NEG_Z;
       }
     }
-    timer = 0;
+    gen.timer = 0;
     looped = false;
-    loading = false;
+    gen.loading = false;
   }
 
-  timer++;
-  if (timer > PLANE_BOING_TIME) {
-    timer = 0;
+  gen.timer++;
+  if (gen.timer > PLANE_BOING_TIME) {
+    gen.timer = 0;
     gen.shift(planeDirection);
     if (planeDirection % 2 == 0) {
       planePosition++;
       if (planePosition == 7) {
         if (looped) {
-          loading = true;
+          gen.loading = true;
         } else {
           planeDirection++;
           looped = true;
@@ -51,7 +51,7 @@ void PlaneBoing::drawPlaneBoing(){
       planePosition--;
       if (planePosition == 0) {
         if (looped) {
-          loading = true;
+          gen.loading = true;
         } else {
           planeDirection--;
           looped = true;

@@ -25,8 +25,10 @@
 class GenerationMethods{
   private:
     uint8_t cube[10][8];
-    bool loading = true;
+   
   public:
+    bool loading = true;
+    int timer = 0;
     void setVoxel(uint8_t x, uint8_t y, uint8_t z);
     void clearCube();
     void renderCube(); 

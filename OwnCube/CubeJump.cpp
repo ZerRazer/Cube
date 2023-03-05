@@ -4,19 +4,19 @@ CubeJump::CubeJump(){
 
 }
 void CubeJump::drawCubeJump(){
- if (loading) {
+ if (gen.loading) {
     gen.clearCube();
     xPos = random(0, 2) * 7;
     yPos = random(0, 2) * 7;
     zPos = random(0, 2) * 7;
     cubeSize = 8;
     cubeExpanding = false;
-    loading = false;
+    gen.loading = false;
   }
 
-  timer++;
-  if (timer > CUBE_JUMP_TIME) {
-    timer = 0;
+  gen.timer++;
+  if (gen.timer > CUBE_JUMP_TIME) {
+    gen.timer = 0;
     gen.clearCube();
     if (xPos == 0 && yPos == 0 && zPos == 0) {
       gen.drawCube(xPos, yPos, zPos, cubeSize);
