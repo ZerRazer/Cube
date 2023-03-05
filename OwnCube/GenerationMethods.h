@@ -12,6 +12,15 @@
 #define POS_Y 4
 #define NEG_Y 5
 
+#define RAIN_TIME 260
+#define PLANE_BOING_TIME 220
+#define SEND_VOXELS_TIME 140
+#define WOOP_WOOP_TIME 350
+#define CUBE_JUMP_TIME 200
+#define GLOW_TIME 8
+#define TEXT_TIME 300
+#define CLOCK_TIME 500
+
 #include "SPI.h"
 class GenerationMethods{
   private:
@@ -22,5 +31,6 @@ class GenerationMethods{
     void clearCube();
     void renderCube(); 
     void shift(uint8_t dir);    
+    void drawCube(uint8_t x, uint8_t y, uint8_t z, uint8_t s);
 };
 #endif
