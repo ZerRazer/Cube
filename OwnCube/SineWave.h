@@ -1,8 +1,6 @@
 #ifndef SINEWAVE_H
 #define SINEWAVE_H
 
-#include <Arduino.h>
-#include <SPI.h>
 #include "GenerationMethods.h"
 
 #define CENTER_X 3.5
@@ -18,9 +16,11 @@ class SineWave{
     double dx, dy, distance;
     bool loading = true;
     bool rotating = false;
+    double counter = 0;
     
   public:
     SineWave(bool rotating);
     void drawSineWave();
+    void setRotating(bool rotating);
 };
 #endif

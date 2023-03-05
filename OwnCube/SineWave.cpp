@@ -46,7 +46,12 @@ void SineWave::drawSineWave() {
       }
       gen.clearCube();
     }
+    this->counter += 0.1;
   }
 }
+void SineWave::setRotating(bool rotating){
+  this->rotating = rotating;
+}
+
 
 
