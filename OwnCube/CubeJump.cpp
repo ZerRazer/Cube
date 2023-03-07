@@ -50,4 +50,5 @@ void CubeJump::drawCubeJump(){
       }
     }
   }
+  gen.renderCube();
 }

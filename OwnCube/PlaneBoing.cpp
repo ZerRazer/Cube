@@ -5,6 +5,7 @@ PlaneBoing::PlaneBoing(){
 }
 void PlaneBoing::drawPlaneBoing(){
  if (gen.loading) {
+    Serial.println("Es geht in PlaneBoing rein");
     gen.clearCube();
     uint8_t axis = random(0, 3);
     planePosition = random(0, 2) * 7;
@@ -35,6 +36,7 @@ void PlaneBoing::drawPlaneBoing(){
 
   gen.timer++;
   if (gen.timer > PLANE_BOING_TIME) {
+    Serial.println("Es hat den Timer auf 0 gesetzt");
     gen.timer = 0;
     gen.shift(planeDirection);
     if (planeDirection % 2 == 0) {
@@ -58,7 +60,9 @@ void PlaneBoing::drawPlaneBoing(){
         }
       }
     }
+    
   }
+  gen.renderCube();
 }
 void PlaneBoing::setPlane(uint8_t axis, uint8_t i) {
   for (uint8_t j = 0; j < 8; j++) {

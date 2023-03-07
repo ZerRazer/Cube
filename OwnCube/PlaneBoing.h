@@ -1,7 +1,6 @@
 #ifndef PLANEBOING_H
 #define PLANEBOING_H
 #include "GenerationMethods.h"
-#define PLANE_BOING_TIME 220
 
 class PlaneBoing{
   private:

@@ -30,7 +30,7 @@ void setup() {
 }
 void change_mode(){
   //Debouncer
-  if(millis() - timer> 1000){
+  if(millis() - timer> 2000){
     timer = 0;
   }
   if(timer == 0){
@@ -40,7 +40,7 @@ void change_mode(){
     gen.loading = true;
     gen.timer = 0;
     currentEffect++;
-    if (currentEffect == 2) {
+    if (currentEffect == 3) {
       currentEffect = 0;
     }
   }
@@ -49,7 +49,9 @@ void loop() {
   switch (currentEffect) {
     case SINEWAVE: sine.drawSineWave(); break;
     case PLANEBOING: plane.drawPlaneBoing(); break;
+    case CUBEJUMP: cube.drawCubeJump(); break;
     default: sine.drawSineWave();
   }
+  
 }
 
