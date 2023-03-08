@@ -4,9 +4,9 @@ PlaneBoing::PlaneBoing(){
 
 }
 void PlaneBoing::drawPlaneBoing(){
- if (gen.loading) {
+ if (loading) {
     Serial.println("Es geht in PlaneBoing rein");
-    gen.clearCube();
+    clearCube();
     uint8_t axis = random(0, 3);
     planePosition = random(0, 2) * 7;
     setPlane(axis, planePosition);
@@ -29,21 +29,21 @@ void PlaneBoing::drawPlaneBoing(){
         planeDirection = NEG_Z;
       }
     }
-    gen.timer = 0;
+    timer = 0;
     looped = false;
-    gen.loading = false;
+    loading = false;
   }
 
-  gen.timer++;
-  if (gen.timer > PLANE_BOING_TIME) {
+  timer++;
+  if (timer > PLANE_BOING_TIME) {
     Serial.println("Es hat den Timer auf 0 gesetzt");
-    gen.timer = 0;
-    gen.shift(planeDirection);
+    timer = 0;
+    shift(planeDirection);
     if (planeDirection % 2 == 0) {
       planePosition++;
       if (planePosition == 7) {
         if (looped) {
-          gen.loading = true;
+          loading = true;
         } else {
           planeDirection++;
           looped = true;
@@ -53,7 +53,7 @@ void PlaneBoing::drawPlaneBoing(){
       planePosition--;
       if (planePosition == 0) {
         if (looped) {
-          gen.loading = true;
+          loading = true;
         } else {
           planeDirection--;
           looped = true;
@@ -62,17 +62,17 @@ void PlaneBoing::drawPlaneBoing(){
     }
     
   }
-  gen.renderCube();
+  renderCube();
 }
 void PlaneBoing::setPlane(uint8_t axis, uint8_t i) {
   for (uint8_t j = 0; j < 8; j++) {
     for (uint8_t k = 0; k < 8; k++) {
       if (axis == XAXIS) {
-        gen.setVoxel(i, j, k);
+        setVoxel(i, j, k);
       } else if (axis == YAXIS) {
-        gen.setVoxel(j, i, k);
+        setVoxel(j, i, k);
       } else if (axis == ZAXIS) {
-        gen.setVoxel(j, k, i);
+        setVoxel(j, k, i);
       }
     }
   }

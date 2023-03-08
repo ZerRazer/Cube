@@ -9,9 +9,8 @@
 
 // define number of iterations
 #define ITERATIONS 185
-class SineWave{
+class SineWave : public GenerationMethods{
   private:
-    GenerationMethods gen;
     double dx, dy, distance;
     bool rotating = false;
     double counter = 0;

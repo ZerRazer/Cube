@@ -3,9 +3,8 @@
 
 #include "GenerationMethods.h"
 
-class CubeJump{
+class CubeJump : public GenerationMethods{
   private:
-    GenerationMethods gen;
     uint8_t xPos;
     uint8_t yPos;
     uint8_t zPos;

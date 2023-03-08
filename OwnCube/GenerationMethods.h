@@ -34,5 +34,6 @@ class GenerationMethods{
     void renderCube(); 
     void shift(uint8_t dir);    
     void drawCube(uint8_t x, uint8_t y, uint8_t z, uint8_t s);
+    void reset();
 };
 #endif

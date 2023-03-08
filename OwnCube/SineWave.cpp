@@ -5,14 +5,14 @@ SineWave::SineWave(bool rotating){
   this->rotating = rotating;
 }
 void SineWave::drawSineWave() {
-  if (gen.loading) {
-    gen.clearCube();
-    gen.loading = false;
+  if (loading) {
+    clearCube();
+    loading = false;
 
   }
-  gen.timer++;
-  if (gen.timer > 300) {
-    gen.timer = 0;
+  timer++;
+  if (timer > 300) {
+    timer = 0;
     // loop through the iteration counter
     for (int i = 0; i < ITERATIONS; i++) {
       // loop through all 64 x and y coordinates
@@ -40,12 +40,12 @@ void SineWave::drawSineWave() {
           // check if the smoothed position is within the bounds of the cube
           if (smoothX >= 0 && smoothX < 8 && smoothY >= 0 && smoothY < 8 && smoothZ >= 0 && smoothZ < 8) {
           // set the voxel at the smoothed position in the cube
-            gen.setVoxel((uint8_t)round(smoothX), (uint8_t)round(smoothY), (uint8_t)round(smoothZ));
+            setVoxel((uint8_t)round(smoothX), (uint8_t)round(smoothY), (uint8_t)round(smoothZ));
           }
-          gen.renderCube();
+          renderCube();
         }
       }
-      gen.clearCube();
+      clearCube();
     }
     this->counter += 0.1;
   }

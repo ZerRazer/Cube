@@ -88,3 +88,8 @@ void GenerationMethods::drawCube(uint8_t x, uint8_t y, uint8_t z, uint8_t s) {
     setVoxel(x, y + s - 1, z + i);
   }
 }
+void GenerationMethods::reset(){
+  loading = true;
+  timer = 0;
+  clearCube();
+}

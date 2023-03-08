@@ -12,7 +12,6 @@
 #define PLANEBOING 1
 #define CUBEJUMP 2
 
-GenerationMethods gen;
 SineWave sine = new SineWave(false);
 PlaneBoing plane;
 CubeJump cube;
@@ -36,9 +35,12 @@ void change_mode(){
   if(timer == 0){
     timer = millis();
     Serial.println("KNOPF GEDRÜCKT");
-    gen.clearCube();
-    gen.loading = true;
-    gen.timer = 0;
+    switch (currentEffect) {
+      case SINEWAVE: sine.reset(); break;
+      case PLANEBOING: plane.reset(); break;
+      case CUBEJUMP: cube.reset(); break;
+      default: sine.reset();
+    }
     currentEffect++;
     if (currentEffect == 3) {
       currentEffect = 0;
