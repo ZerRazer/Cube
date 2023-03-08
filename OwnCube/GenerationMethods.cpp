@@ -1,7 +1,7 @@
 #include "GenerationMethods.h"
 
 void GenerationMethods::setVoxel(uint8_t x, uint8_t y, uint8_t z) {
-  cube[z][y] |= (0x01 << x);
+  cube[7 - y][7 - z] |= (0x01 << x);
 }
 void GenerationMethods::clearCube() {
     for (uint8_t z = 0; z < 8; z++) {
