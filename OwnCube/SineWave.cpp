@@ -24,7 +24,7 @@ void SineWave::drawSineWave() {
           this->distance = sqrt(dx * dx + dy * dy) * 5;   
           
           // calculate z coordinate using sin() based on distance from center and iteration counter
-          double y = CENTER_Z + sin((this->distance + i) * 0.1 ) * 3.5;
+          double y = CENTER_Z + sin((this->distance + i )* 0.1) * 3.5;
           // cast coordinates to integers and set voxel in cube
           // determine the position in the cube array based on the smoothed x, y, and z coordinates
           double smoothX = x;

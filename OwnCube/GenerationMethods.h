@@ -30,6 +30,8 @@ class GenerationMethods{
     bool loading = true;
     int timer = 0;
     void setVoxel(uint8_t x, uint8_t y, uint8_t z);
+    void clearVoxel(uint8_t x, uint8_t y, uint8_t z);
+    bool getVoxel(uint8_t x, uint8_t y, uint8_t z);
     void clearCube();
     void renderCube(); 
     void shift(uint8_t dir);    

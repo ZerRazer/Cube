@@ -14,6 +14,7 @@ class SineWave : public GenerationMethods{
     double dx, dy, distance;
     bool rotating = false;
     double counter = 0;
+    int i = 0;
     
   public:
     SineWave(bool rotating);

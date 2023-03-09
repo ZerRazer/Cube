@@ -3,6 +3,13 @@
 void GenerationMethods::setVoxel(uint8_t x, uint8_t y, uint8_t z) {
   cube[7 - y][7 - z] |= (0x01 << x);
 }
+void GenerationMethods::clearVoxel(uint8_t x, uint8_t y, uint8_t z) {
+  cube[7 - y][7 - z] ^= (0x01 << x);
+}
+
+bool GenerationMethods::getVoxel(uint8_t x, uint8_t y, uint8_t z) {
+  return (cube[7 - y][7 - z] & (0x01 << x)) == (0x01 << x);
+}
 void GenerationMethods::clearCube() {
     for (uint8_t z = 0; z < 8; z++) {
       for (uint8_t y = 0; y < 8; y++) {
