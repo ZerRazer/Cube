@@ -5,23 +5,32 @@
 #include "CubeJump.h"
 #include "Rain.h"
 #include "SendVoxels.h"
+#include "WoopWoop.h"
 #include "GenerationMethods.h"
+#include "Glow.h"
 
 #define BUTTON_PIN 2
 #define TOTAL_EFFECTS 3
 
-#define TOTAL_EFFECTS 5
+//Defines all effects you can use
+#define TOTAL_EFFECTS 7
 #define SINEWAVE 0
 #define PLANEBOING 1
 #define CUBEJUMP 2
 #define RAIN 3
 #define SEND_VOXELS 4
+#define WOOP_WOOP 5
+#define GLOW 6
 
+//creates Object of the Effects to get access to the methods(Create only once!)
 SineWave sine = new SineWave(false);
 PlaneBoing plane;
 CubeJump cube;
 Rain raining;
 SendVoxels voxels;
+WoopWoop woop;
+Glow glow;
+
 //RotatingSineWave rotateSin;
 uint8_t currentEffect;
 int timer = 0;
@@ -48,6 +57,8 @@ void change_mode(){
       case CUBEJUMP: cube.reset(); break;
       case RAIN: raining.reset(); break;
       case SEND_VOXELS: voxels.reset(); break;
+      case WOOP_WOOP: woop.reset(); break;
+      case GLOW: glow.reset(); break;
       default: sine.reset();
     }
     currentEffect++;
@@ -63,6 +74,8 @@ void loop() {
     case CUBEJUMP: cube.drawCubeJump(); break;
     case RAIN: raining.drawRain(); break;
     case SEND_VOXELS: voxels.sendDrawVoxels(); break;
+    case WOOP_WOOP: woop.drawWoopWoop(); break;
+    case GLOW: glow.drawGlow(); break;
     default: sine.drawSineWave();
   }
   

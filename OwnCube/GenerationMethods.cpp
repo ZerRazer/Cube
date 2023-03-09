@@ -100,3 +100,10 @@ void GenerationMethods::reset(){
   timer = 0;
   clearCube();
 }
+void GenerationMethods::lightCube() {
+  for (uint8_t i = 0; i < 8; i++) {
+    for (uint8_t j = 0; j < 8; j++) {
+      cube[i][j] = 0xFF;
+    }
+  }
+}
