@@ -8,7 +8,7 @@
 #define CENTER_Z 3.5
 
 // define number of iterations
-#define ITERATIONS 185
+#define ITERATIONS 999999
 class SineWave : public GenerationMethods{
   private:
     double dx, dy, distance;

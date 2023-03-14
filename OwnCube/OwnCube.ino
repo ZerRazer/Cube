@@ -8,12 +8,13 @@
 #include "WoopWoop.h"
 #include "GenerationMethods.h"
 #include "Glow.h"
+#include "Text.h"
 
 #define BUTTON_PIN 2
 #define TOTAL_EFFECTS 3
 
 //Defines all effects you can use
-#define TOTAL_EFFECTS 7
+#define TOTAL_EFFECTS 8
 #define SINEWAVE 0
 #define PLANEBOING 1
 #define CUBEJUMP 2
@@ -21,6 +22,7 @@
 #define SEND_VOXELS 4
 #define WOOP_WOOP 5
 #define GLOW 6
+#define TEXT 7
 
 //creates Object of the Effects to get access to the methods(Create only once!)
 SineWave sine = new SineWave(false);
@@ -30,6 +32,7 @@ Rain raining;
 SendVoxels voxels;
 WoopWoop woop;
 Glow glow;
+Text text;
 
 //RotatingSineWave rotateSin;
 uint8_t currentEffect;
@@ -37,7 +40,7 @@ int timer = 0;
 void setup() {
   SPI.begin();
   SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
-  //Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
 
   attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), change_mode, CHANGE);
@@ -59,6 +62,7 @@ void change_mode(){
       case SEND_VOXELS: voxels.reset(); break;
       case WOOP_WOOP: woop.reset(); break;
       case GLOW: glow.reset(); break;
+      case TEXT: text.reset(); break;
       default: sine.reset();
     }
     currentEffect++;
@@ -76,6 +80,7 @@ void loop() {
     case SEND_VOXELS: voxels.sendDrawVoxels(); break;
     case WOOP_WOOP: woop.drawWoopWoop(); break;
     case GLOW: glow.drawGlow(); break;
+    case TEXT: text.drawText("AB"); break;
     default: sine.drawSineWave();
   }
   

@@ -55,4 +55,3 @@ void SineWave::setRotating(bool rotating){
 }
 
 
-

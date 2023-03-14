@@ -18,15 +18,17 @@
 #define WOOP_WOOP_TIME 350
 #define CUBE_JUMP_TIME 200
 #define GLOW_TIME 8
-#define TEXT_TIME 300
+#define TEXT_TIME 800
+#define SINEWAVE_TIME 100
 #define CLOCK_TIME 500
 
 #include "SPI.h"
 class GenerationMethods{
   private:
-    uint8_t cube[10][8];
+
    
   public:
+    uint8_t cube[10][8];
     bool loading = true;
     int timer = 0;
     void setVoxel(uint8_t x, uint8_t y, uint8_t z);
